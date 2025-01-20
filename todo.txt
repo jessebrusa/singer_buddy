@@ -1,0 +1,16 @@
+Objective:
+- dynamically change keys
+- dynamically change bpm
+- select chords in key and suggest next chords
+- choose chords and repetitions per measure
+- choose how long to hold chords
+- tool to help find key
+- create drum track
+- easy to repeat sections or rows
+- play the music by section or song
+- click on chords to play sound
+- mute option for chords, melody, and percussion
+- build a melody
+- change instruments
+- save and load
+- title, artist time recorded on export
