@@ -1,0 +1,41 @@
+.change-title-box {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in; /* Faster transition for sliding up */
+}
+
+.change-title-box.visible {
+    max-height: 200px; /* Adjust this value based on the content height */
+    transition: max-height 1s ease-out; /* Slower transition for sliding down */
+}
+
+.change-title-box label {
+    display: block;
+    margin: 10px 0;
+}
+
+.input-button-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.input-button-container input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.button-container {
+    display: flex;
+}
+
+.button-container button {
+    margin: 0 5px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
