@@ -10,7 +10,7 @@ class ChangeTitle {
         label.textContent = 'Enter new title:';
         const input = document.createElement('input');
         input.type = 'text';
-        input.value = this.titleInstance.title;
+        input.value = 'Untitled';
 
         const button = document.createElement('button');
         button.textContent = 'Submit';
