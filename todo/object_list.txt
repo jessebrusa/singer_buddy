@@ -1,0 +1,43 @@
+Music Composition & Arrangement
+
+Focus: Creating, arranging, and managing musical elements.
+	•	KeyManager: Handles key and scale relationships.
+	•	BPMManager: Manages beats per minute dynamically.
+	•	ChordSelector: Suggests chords based on the key.
+	•	ChordProgressionGenerator: Creates chord progressions.
+	•	Measure: Represents musical bars with progressions and durations.
+	•	Chord: Defines a single chord with optional inversions/extensions.
+	•	RhythmPatternGenerator: Generates drum/percussion rhythms.
+	•	MelodyBuilder: Assists with melody creation using scales/chords.
+	•	LyricWriter: Synchronizes lyrics with melody/sections.
+	•	InstrumentManager: Manages instrument assignment and switching.
+
+Tools & Features for Music Creation
+
+Focus: Enhancing the user experience in creating music.
+	•	KeyFinder: Identifies the key of a composition.
+	•	DrumTrackCreator: Builds drum/percussion loops.
+	•	LoopBuilder: Manages loop creation and reuse.
+	•	TimeSignatureManager: Handles time signature changes.
+	•	Track: Represents a single musical track.
+	•	MuteManager: Allows track-specific muting.
+	•	PlaybackManager: Handles playback, looping, and section navigation.
+	•	RealTimeCollaborator: Supports collaborative editing and composition.
+
+File Management & Exporting
+
+Focus: Saving, loading, and exporting musical projects.
+	•	Project: A container for all composition elements.
+	•	Exporter: Converts compositions to formats like MP3/WAV.
+	•	StemExporter: Exports individual track stems for mixing/mastering.
+	•	FileManager: Handles project saving/loading and version control.
+
+User Interface & Experience
+
+Focus: Simplifying and enhancing user interaction.
+	•	UIManager: Manages UI layout and usability.
+	•	DragDropInterface: Enables drag-and-drop functionality for MIDI and loops.
+	•	WorkspaceLayout: Customizes and saves workspace layouts.
+	•	EffectRack: Applies audio effects like EQ, reverb, or delay.
+	•	TutorialManager: Offers guided tutorials and tips.
+

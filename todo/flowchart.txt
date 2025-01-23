@@ -1,0 +1,27 @@
+KeyManager
+ ├─ ChordSelector
+ │   └─ ChordProgressionGenerator
+ │       └─ MelodyBuilder
+ └─ KeyFinder
+
+BPMManager
+ └─ RhythmPatternGenerator
+     └─ DrumTrackCreator
+
+TimeSignatureManager
+ └─ Measure
+     └─ Track
+         ├─ MuteManager
+         ├─ EffectRack
+         └─ PlaybackManager
+
+Project
+ ├─ FileManager
+ ├─ Exporter
+ │  └─ StemExporter
+ └─ Save
+ └─ Load
+ 
+UIManager
+ ├─ WorkspaceLayout
+ └─ EffectRack

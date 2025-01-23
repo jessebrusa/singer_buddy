@@ -1,50 +1,27 @@
-document.getElementById('generate').addEventListener('click', () => {
-    const key = document.getElementById('key').value;
-    const bpm = document.getElementById('bpm').value;
+import KeyManager from './keyManager/keyManager.js';
+import BpmManager from './bpmManager/bpmManager.js';
+import TimeSignatureManager from './timeSignatureManager/timeSignatureManager.js';
+import ProjectManager from './projectManager/projectManager.js';
+import UIManager from './uiManager/uiManager.js';
 
-    // Interact with KeyManager
-    const chordProgression = KeyManager.ChordSelector.selectChords(key);
-    const melody = KeyManager.ChordProgressionGenerator.generateMelody(chordProgression);
+function main() {
+    let bpmManager = new BpmManager();
+    let keyManager = new KeyManager();
+    let timeSignatureManager = new TimeSignatureManager();
+    let projectManager = new ProjectManager(); 
+    let uiManager = new UIManager();
 
-    // Interact with BPMManager
-    BPMManager.setBPM(bpm);
-    const rhythmPattern = BPMManager.RhythmPatternGenerator.generatePattern();
+    console.log(`${bpmManager.getBpm()} BPM`);
+    console.log(`Key: ${keyManager.key}, Notes: ${keyManager.getNotes()}`);
+    console.log(`Time Signature: ${timeSignatureManager.getTimeSignature()}`);
+    console.log(`Project: ${projectManager.getName()}`);
 
-    // Update UI
-    document.getElementById('output').innerHTML = `
-        <p>Key: ${key}</p>
-        <p>BPM: ${bpm}</p>
-        <p>Chord Progression: ${chordProgression.join(', ')}</p>
-        <p>Melody: ${melody}</p>
-        <p>Rhythm Pattern: ${rhythmPattern}</p>
-    `;
-});
+    const bpmElement = document.getElementById('bpm');
+    uiManager.addElement('bpm', bpmElement);
 
-// Example tool implementations
-const KeyManager = {
-    ChordSelector: {
-        selectChords: (key) => {
-            // Logic to select chords based on key
-            return ['C', 'G', 'Am', 'F']; // Example chords
-        }
-    },
-    ChordProgressionGenerator: {
-        generateMelody: (chords) => {
-            // Logic to generate melody based on chords
-            return 'C E G A'; // Example melody
-        }
-    }
-};
+    // Test showing and hiding the element
+    uiManager.hideElement('bpm');
+    setTimeout(() => uiManager.showElement('bpm'), 2000);
+}
 
-const BPMManager = {
-    setBPM: (bpm) => {
-        // Logic to set BPM
-        console.log(`BPM set to ${bpm}`);
-    },
-    RhythmPatternGenerator: {
-        generatePattern: () => {
-            // Logic to generate rhythm pattern
-            return 'Kick Snare Kick Snare'; // Example pattern
-        }
-    }
-};
+main();

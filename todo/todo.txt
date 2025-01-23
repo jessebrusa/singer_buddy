@@ -1,0 +1,46 @@
+Here's your updated list with the new additions included:
+
+### **Objective:**
+- Dynamically change keys
+- Dynamically change BPM
+- Select chords in key and suggest next chords
+- Choose chords and repetitions per measure
+- Choose how long to hold chords
+- Tool to help find key
+- Create drum track
+- Easy to repeat sections or rows
+- Play the music by section or song
+- Click on chords to play sound
+- Mute option for chords, melody, and percussion
+- Build a melody
+- Change instruments
+- Save and load
+- Title, artist, time recorded on export
+- Sections can have multiple instruments
+- Clean, easy to navigate, quick
+- Write lyrics
+- **Chord Progression Generator** (new)
+- **Loop Builder** (new)
+- **Rhythm Pattern Generator** (new)
+- **Time signature changes** (new)
+
+### **Tools & Features for Music Creation:**
+- Tool to help find key
+- Create drum track
+- Easy to repeat sections or rows
+- Play the music by section or song
+- Click on chords to play sound
+- Mute option for chords, melody, and percussion
+- Change instruments
+- **Loop Builder** (new)
+- **Real-Time Collaboration** (new)
+
+### **File Management & Exporting:**
+- Save and load
+- Title, artist, time recorded on export
+- **Export in MP3 and WAV formats** (new)
+- **Export stem downloads** (new)
+
+### **User Interface & Experience:**
+- Clean, easy to navigate, quick
+
