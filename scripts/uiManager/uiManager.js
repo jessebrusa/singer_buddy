@@ -1,4 +1,4 @@
-import Title from './widgets/title.js';
+import Title from './widgets/title/title.js';
 
 
 class UIManager {
