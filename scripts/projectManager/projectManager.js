@@ -1,35 +1,15 @@
-class FileManager {
-    // Implementation of FileManager
-}
-
-class Exporter {
-    // Implementation of Exporter
-}
-
-class StemExporter extends Exporter {
-    // Implementation of StemExporter
-}
-
-class Save {
-    // Implementation of Save
-}
-
-class Load {
-    // Implementation of Load
-}
-
 class ProjectManager {
-    constructor(name='Untitled') {
-        this.name = name;
-        this.fileManager = new FileManager();
-        this.exporter = new Exporter();
-        this.stemExporter = new StemExporter();
-        this.save = new Save();
-        this.load = new Load();
+    constructor() {
+        this.data = {
+            'title': 'Untitled',
+            'bpm': 120,
+            'key': 'C',
+            'timeSignature': '4/4'
+        }
     }
 
-    getName() {
-        return this.name;
+    getTitle() {
+        return this.data.title;
     }
 }
 
