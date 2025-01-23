@@ -5,20 +5,14 @@ import ProjectManager from './projectManager/projectManager.js';
 import UIManager from './uiManager/uiManager.js';
 
 function main() {
+    let projectManager = new ProjectManager(); 
     let bpmManager = new BpmManager();
     let keyManager = new KeyManager();
     let timeSignatureManager = new TimeSignatureManager();
-    let projectManager = new ProjectManager(); 
-    let uiManager = new UIManager();
+    let uiManager = new UIManager(projectManager);
 
-    console.log(`${bpmManager.getBpm()} BPM`);
-    console.log(`Key: ${keyManager.key}, Notes: ${keyManager.getNotes()}`);
-    console.log(`Time Signature: ${timeSignatureManager.getTimeSignature()}`);
-    console.log(`Project: ${projectManager.getName()}`);
-    
-
-
+    // Log to verify initialization
+    console.log('UIManager initialized');
 }
-
 
 main();

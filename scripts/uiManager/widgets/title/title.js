@@ -3,7 +3,7 @@ import ChangeTitle from './changeTitle.js';
 class Title {
     constructor(title = 'Untitled') {
         this.title = title;
-        this.isSubmitted = false; // State to track if the project name has been submitted
+        this.isSubmitted = false; 
         this.changeTitle = new ChangeTitle(this);
     }
 
