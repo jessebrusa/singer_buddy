@@ -1,6 +1,12 @@
+import Title from './widgets/title.js';
+
+
 class UIManager {
     constructor() {
         this.elements = {};
+        this.title = new Title();
+
+        this.title.createTitle();
     }
 
     addElement(name, element) {

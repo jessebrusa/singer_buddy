@@ -15,13 +15,10 @@ function main() {
     console.log(`Key: ${keyManager.key}, Notes: ${keyManager.getNotes()}`);
     console.log(`Time Signature: ${timeSignatureManager.getTimeSignature()}`);
     console.log(`Project: ${projectManager.getName()}`);
+    
 
-    const bpmElement = document.getElementById('bpm');
-    uiManager.addElement('bpm', bpmElement);
 
-    // Test showing and hiding the element
-    uiManager.hideElement('bpm');
-    setTimeout(() => uiManager.showElement('bpm'), 2000);
 }
+
 
 main();
