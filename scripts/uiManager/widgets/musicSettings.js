@@ -1,5 +1,6 @@
 class MusicSettings {
-    constructor() {
+    constructor(appContainer) {
+        this.appContainer = appContainer;
         this.applyStyles();
     }
 
@@ -51,7 +52,7 @@ class MusicSettings {
         section.appendChild(keyContainer);
         section.appendChild(timeSignatureContainer);
 
-        document.body.appendChild(section);
+        this.appContainer.appendChild(section);
     }
 
     applyStyles() {
