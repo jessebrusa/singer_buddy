@@ -14,6 +14,7 @@
     flex-direction: column;
     align-items: center;
     margin: 0 10px;
+    position: relative;
 }
 .music-settings label {
     margin-bottom: 8px;
@@ -32,13 +33,41 @@
 .music-settings .key-select-container select {
     margin-right: 10px;
 }
-.music-settings .find-key-button {
+.music-settings .button {
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
     cursor: pointer;
+    width: 100px; /* Set a fixed width for all buttons */
 }
-.music-settings .find-key-button:hover {
+.music-settings .button:hover {
     background-color: #f0f0f0;
+}
+.music-settings .bpm-wheel {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.music-settings .bpm-wheel.visible {
+    display: flex;
+}
+.music-settings .bpm-number {
+    font-size: 20px;
+    transition: transform 0.2s, opacity 0.2s;
+    width: 60px;
+    text-align: center;
+    cursor: pointer;
 }

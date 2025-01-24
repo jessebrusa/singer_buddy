@@ -1,9 +1,6 @@
 class MusicSettings {
-    constructor(appContainer, bpmManager, keyManager, timeSignatureManager) {
+    constructor(appContainer) {
         this.appContainer = appContainer;
-        this.bpmManager = bpmManager;
-        this.keyManager = keyManager;
-        this.timeSignatureManager = timeSignatureManager;
     }
 
     createMusicSettings() {
@@ -24,16 +21,80 @@ class MusicSettings {
     createBpmContainer() {
         const bpmLabel = document.createElement('label');
         bpmLabel.textContent = 'BPM:';
-        const bpmInput = document.createElement('input');
-        bpmInput.type = 'number';
-        bpmInput.classList.add('bpm-input');
+        const bpmButton = document.createElement('button');
+        bpmButton.classList.add('bpm-button', 'button');
+        bpmButton.textContent = '120';
+
+        const bpmWheel = this.createBpmWheel();
 
         const bpmContainer = document.createElement('div');
         bpmContainer.classList.add('input-container');
         bpmContainer.appendChild(bpmLabel);
-        bpmContainer.appendChild(bpmInput);
+        bpmContainer.appendChild(bpmButton);
+        bpmContainer.appendChild(bpmWheel);
+
+        bpmButton.addEventListener('click', () => {
+            bpmWheel.classList.toggle('visible');
+            this.updateBpmWheel(bpmWheel, bpmButton.textContent);
+        });
+
+        bpmWheel.addEventListener('mousedown', this.startDrag.bind(this, bpmWheel, bpmButton));
+        bpmWheel.addEventListener('touchstart', this.startDrag.bind(this, bpmWheel, bpmButton), { passive: true });
 
         return bpmContainer;
+    }
+
+    createBpmWheel() {
+        const bpmWheel = document.createElement('div');
+        bpmWheel.classList.add('bpm-wheel');
+
+        for (let i = 0; i < 5; i++) {
+            const bpmNumber = document.createElement('div');
+            bpmNumber.classList.add('bpm-number');
+            bpmWheel.appendChild(bpmNumber);
+        }
+
+        return bpmWheel;
+    }
+
+    updateBpmWheel(bpmWheel, bpmValue) {
+        const bpmNumbers = bpmWheel.querySelectorAll('.bpm-number');
+        const bpm = parseInt(bpmValue, 10);
+
+        for (let i = 0; i < bpmNumbers.length; i++) {
+            const offset = i - 2;
+            const value = bpm + offset;
+            bpmNumbers[i].textContent = value;
+            bpmNumbers[i].style.transform = `scale(${1 - Math.abs(offset) * 0.2})`;
+            bpmNumbers[i].style.opacity = `${1 - Math.abs(offset) * 0.3}`;
+        }
+    }
+
+    startDrag(bpmWheel, bpmButton, event) {
+        event.preventDefault();
+        const startX = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
+        const initialBpm = parseInt(bpmButton.textContent, 10);
+
+        const onMouseMove = (moveEvent) => {
+            const currentX = moveEvent.type === 'mousemove' ? moveEvent.clientX : moveEvent.touches[0].clientX;
+            const deltaX = currentX - startX;
+            const bpmChange = Math.round(deltaX / 10); // Adjust sensitivity as needed
+            const newBpm = Math.min(Math.max(initialBpm + bpmChange, 40), 180);
+            bpmButton.textContent = newBpm;
+            this.updateBpmWheel(bpmWheel, newBpm);
+        };
+
+        const onMouseUp = () => {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+            document.removeEventListener('touchmove', onMouseMove);
+            document.removeEventListener('touchend', onMouseUp);
+        };
+
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('touchmove', onMouseMove);
+        document.addEventListener('touchend', onMouseUp);
     }
 
     createKeyContainer() {
@@ -55,7 +116,7 @@ class MusicSettings {
 
         const findKeyButton = document.createElement('button');
         findKeyButton.textContent = 'Find Key';
-        findKeyButton.classList.add('find-key-button');
+        findKeyButton.classList.add('find-key-button', 'button');
 
         const keySelectContainer = document.createElement('div');
         keySelectContainer.classList.add('key-select-container');
