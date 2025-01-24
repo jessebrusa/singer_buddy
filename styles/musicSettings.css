@@ -1,0 +1,44 @@
+.music-settings {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.music-settings .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+.music-settings label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.music-settings input, .music-settings select {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.music-settings .key-select-container {
+    display: flex;
+    align-items: center;
+}
+.music-settings .key-select-container select {
+    margin-right: 10px;
+}
+.music-settings .find-key-button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.music-settings .find-key-button:hover {
+    background-color: #f0f0f0;
+}

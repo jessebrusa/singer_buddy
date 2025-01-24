@@ -1,5 +1,5 @@
 import Title from './widgets/title/title.js';
-import MusicSettings from './widgets/musicSettings.js';
+import MusicSettings from './musicSettings/musicSettings.js';
 
 class UIManager {
     constructor(projectManager) {

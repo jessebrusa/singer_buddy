@@ -16,9 +16,23 @@ class MusicSettings {
 
         const keyLabel = document.createElement('label');
         keyLabel.textContent = 'Key:';
-        const keyInput = document.createElement('input');
-        keyInput.type = 'text';
-        keyInput.classList.add('key-input');
+        const keySelect = document.createElement('select');
+        keySelect.classList.add('key-select');
+
+        const keys = [
+            'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B',
+            'Cm', 'C#m', 'Dm', 'D#m', 'Em', 'Fm', 'F#m', 'Gm', 'G#m', 'Am', 'A#m', 'Bm'
+        ];
+        keys.forEach(key => {
+            const option = document.createElement('option');
+            option.value = key;
+            option.textContent = key;
+            keySelect.appendChild(option);
+        });
+
+        const findKeyButton = document.createElement('button');
+        findKeyButton.textContent = 'Find Key';
+        findKeyButton.classList.add('find-key-button');
 
         const timeSignatureLabel = document.createElement('label');
         timeSignatureLabel.textContent = 'Time Signature:';
@@ -41,7 +55,11 @@ class MusicSettings {
         const keyContainer = document.createElement('div');
         keyContainer.classList.add('input-container');
         keyContainer.appendChild(keyLabel);
-        keyContainer.appendChild(keyInput);
+        const keySelectContainer = document.createElement('div');
+        keySelectContainer.classList.add('key-select-container');
+        keySelectContainer.appendChild(keySelect);
+        keySelectContainer.appendChild(findKeyButton);
+        keyContainer.appendChild(keySelectContainer);
 
         const timeSignatureContainer = document.createElement('div');
         timeSignatureContainer.classList.add('input-container');
@@ -84,6 +102,23 @@ class MusicSettings {
                 padding: 8px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
+            }
+            .key-select-container {
+                display: flex;
+                align-items: center;
+            }
+            .key-select-container select {
+                margin-right: 10px;
+            }
+            .find-key-button {
+                padding: 8px 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: #fff;
+                cursor: pointer;
+            }
+            .find-key-button:hover {
+                background-color: #f0f0f0;
             }
         `;
         document.head.appendChild(style);
