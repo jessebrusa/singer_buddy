@@ -40,6 +40,7 @@
     background-color: #fff;
     cursor: pointer;
     width: 100px; /* Set a fixed width for all buttons */
+    text-align: center; /* Ensure text is centered */
 }
 .music-settings .button:hover {
     background-color: #f0f0f0;
