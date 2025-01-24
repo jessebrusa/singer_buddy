@@ -69,5 +69,8 @@
     transition: transform 0.2s, opacity 0.2s;
     width: 60px;
     text-align: center;
-    cursor: pointer;
+    cursor: grab;
+}
+.music-settings .bpm-number:active {
+    cursor: grabbing;
 }
