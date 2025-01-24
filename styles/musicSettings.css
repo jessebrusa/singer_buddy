@@ -62,6 +62,7 @@
     border-radius: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    z-index: 1001; /* Ensure the wheel is above the overlay */
 }
 .music-settings .bpm-wheel.visible,
 .music-settings .key-wheel.visible,
@@ -85,21 +86,6 @@
 .music-settings .key-buttons-container {
     display: flex;
     gap: 10px; /* Space between buttons */
-}
-.find-key-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-    display: none;
-}
-.find-key-modal.visible {
-    display: block;
 }
 .modal-overlay {
     position: fixed;

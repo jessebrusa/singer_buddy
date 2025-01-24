@@ -4,6 +4,30 @@ class MusicSettings {
     constructor(appContainer) {
         this.appContainer = appContainer;
         this.findKeyModal = new FindKeyModal();
+        this.overlay = this.createOverlay();
+        document.body.appendChild(this.overlay);
+    }
+
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.classList.add('modal-overlay');
+        overlay.addEventListener('click', () => this.closeAllWheels());
+        return overlay;
+    }
+
+    openOverlay() {
+        this.overlay.classList.add('visible');
+    }
+
+    closeOverlay() {
+        this.overlay.classList.remove('visible');
+    }
+
+    closeAllWheels() {
+        document.querySelectorAll('.bpm-wheel, .key-wheel, .time-signature-wheel').forEach(wheel => {
+            wheel.classList.remove('visible');
+        });
+        this.closeOverlay();
     }
 
     createMusicSettings() {
@@ -28,7 +52,7 @@ class MusicSettings {
         bpmButton.classList.add('bpm-button', 'button');
         bpmButton.textContent = '120';
 
-        const bpmWheel = this.createBpmWheel();
+        const bpmWheel = this.createBpmWheel(bpmButton);
 
         const bpmContainer = document.createElement('div');
         bpmContainer.classList.add('input-container');
@@ -38,7 +62,12 @@ class MusicSettings {
 
         bpmButton.addEventListener('click', () => {
             bpmWheel.classList.toggle('visible');
-            this.updateBpmWheel(bpmWheel, bpmButton.textContent);
+            if (bpmWheel.classList.contains('visible')) {
+                this.openOverlay();
+                this.updateBpmWheel(bpmWheel, bpmButton.textContent);
+            } else {
+                this.closeOverlay();
+            }
         });
 
         bpmWheel.addEventListener('mousedown', this.startDrag.bind(this, bpmWheel, bpmButton));
@@ -47,7 +76,7 @@ class MusicSettings {
         return bpmContainer;
     }
 
-    createBpmWheel() {
+    createBpmWheel(bpmButton) {
         const bpmWheel = document.createElement('div');
         bpmWheel.classList.add('bpm-wheel');
 
@@ -55,6 +84,15 @@ class MusicSettings {
             const bpmNumber = document.createElement('div');
             bpmNumber.classList.add('bpm-number');
             bpmWheel.appendChild(bpmNumber);
+
+            // Add click event listener to select the center number
+            bpmNumber.addEventListener('click', () => {
+                if (i === 2) { // Center number index
+                    bpmButton.textContent = bpmNumber.textContent;
+                    bpmWheel.classList.remove('visible');
+                    this.closeOverlay();
+                }
+            });
         }
 
         return bpmWheel;
@@ -125,7 +163,7 @@ class MusicSettings {
         keyButton.classList.add('key-button', 'button');
         keyButton.textContent = 'C';
 
-        const keyWheel = this.createKeyWheel();
+        const keyWheel = this.createKeyWheel(keyButton);
 
         const keyFunctionButton = document.createElement('button');
         keyFunctionButton.classList.add('key-function-button', 'button');
@@ -147,10 +185,15 @@ class MusicSettings {
 
         keyButton.addEventListener('click', () => {
             keyWheel.classList.toggle('visible');
-            this.updateWheel(keyWheel, keyButton.textContent, [
-                'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B',
-                'Cm', 'C#m', 'Dm', 'D#m', 'Em', 'Fm', 'F#m', 'Gm', 'G#m', 'Am', 'A#m', 'Bm'
-            ]);
+            if (keyWheel.classList.contains('visible')) {
+                this.openOverlay();
+                this.updateWheel(keyWheel, keyButton.textContent, [
+                    'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B',
+                    'Cm', 'C#m', 'Dm', 'D#m', 'Em', 'Fm', 'F#m', 'Gm', 'G#m', 'Am', 'A#m', 'Bm'
+                ]);
+            } else {
+                this.closeOverlay();
+            }
         });
 
         keyWheel.addEventListener('mousedown', this.startDrag.bind(this, keyWheel, keyButton));
@@ -159,7 +202,7 @@ class MusicSettings {
         return keyContainer;
     }
 
-    createKeyWheel() {
+    createKeyWheel(keyButton) {
         const keyWheel = document.createElement('div');
         keyWheel.classList.add('key-wheel');
 
@@ -167,6 +210,15 @@ class MusicSettings {
             const keyNumber = document.createElement('div');
             keyNumber.classList.add('key-number');
             keyWheel.appendChild(keyNumber);
+
+            // Add click event listener to select the center number
+            keyNumber.addEventListener('click', () => {
+                if (i === 2) { // Center number index
+                    keyButton.textContent = keyNumber.textContent;
+                    keyWheel.classList.remove('visible');
+                    this.closeOverlay();
+                }
+            });
         }
 
         return keyWheel;
@@ -179,7 +231,7 @@ class MusicSettings {
         timeSignatureButton.classList.add('time-signature-button', 'button');
         timeSignatureButton.textContent = '4/4';
 
-        const timeSignatureWheel = this.createTimeSignatureWheel();
+        const timeSignatureWheel = this.createTimeSignatureWheel(timeSignatureButton);
 
         const timeSignatureContainer = document.createElement('div');
         timeSignatureContainer.classList.add('input-container');
@@ -189,7 +241,12 @@ class MusicSettings {
 
         timeSignatureButton.addEventListener('click', () => {
             timeSignatureWheel.classList.toggle('visible');
-            this.updateWheel(timeSignatureWheel, timeSignatureButton.textContent, ['4/4', '3/4', '2/4', '6/8', '12/8']);
+            if (timeSignatureWheel.classList.contains('visible')) {
+                this.openOverlay();
+                this.updateWheel(timeSignatureWheel, timeSignatureButton.textContent, ['4/4', '3/4', '2/4', '6/8', '12/8']);
+            } else {
+                this.closeOverlay();
+            }
         });
 
         timeSignatureWheel.addEventListener('mousedown', this.startDrag.bind(this, timeSignatureWheel, timeSignatureButton));
@@ -198,7 +255,7 @@ class MusicSettings {
         return timeSignatureContainer;
     }
 
-    createTimeSignatureWheel() {
+    createTimeSignatureWheel(timeSignatureButton) {
         const timeSignatureWheel = document.createElement('div');
         timeSignatureWheel.classList.add('time-signature-wheel');
 
@@ -206,6 +263,15 @@ class MusicSettings {
             const timeSignatureNumber = document.createElement('div');
             timeSignatureNumber.classList.add('time-signature-number');
             timeSignatureWheel.appendChild(timeSignatureNumber);
+
+            // Add click event listener to select the center number
+            timeSignatureNumber.addEventListener('click', () => {
+                if (i === 2) { // Center number index
+                    timeSignatureButton.textContent = timeSignatureNumber.textContent;
+                    timeSignatureWheel.classList.remove('visible');
+                    this.closeOverlay();
+                }
+            });
         }
 
         return timeSignatureWheel;

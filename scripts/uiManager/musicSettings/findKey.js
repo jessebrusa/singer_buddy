@@ -1,4 +1,3 @@
-
 class FindKeyModal {
     constructor() {
         this.modal = this.createModal();
