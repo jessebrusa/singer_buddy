@@ -1,6 +1,9 @@
+import FindKeyModal from './findKey.js';
+
 class MusicSettings {
     constructor(appContainer) {
         this.appContainer = appContainer;
+        this.findKeyModal = new FindKeyModal();
     }
 
     createMusicSettings() {
@@ -128,8 +131,7 @@ class MusicSettings {
         keyFunctionButton.classList.add('key-function-button', 'button');
         keyFunctionButton.textContent = 'Find Key';
         keyFunctionButton.addEventListener('click', () => {
-            // Define the function to be performed here
-            alert('Key function button clicked!');
+            this.findKeyModal.open();
         });
 
         const keyButtonsContainer = document.createElement('div');
