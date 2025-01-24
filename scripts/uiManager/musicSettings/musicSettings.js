@@ -85,14 +85,16 @@ class MusicSettings {
             bpmNumber.classList.add('bpm-number');
             bpmWheel.appendChild(bpmNumber);
 
-            // Add click event listener to select the center number
+            // Add click event listener to select the number
             bpmNumber.addEventListener('click', () => {
-                if (i === 2) { // Center number index
-                    bpmButton.textContent = bpmNumber.textContent;
-                    bpmWheel.classList.remove('visible');
-                    this.closeOverlay();
-                }
+                bpmButton.textContent = bpmNumber.textContent;
+                bpmWheel.classList.remove('visible');
+                this.closeOverlay();
             });
+
+            // Add event listeners for dragging
+            bpmNumber.addEventListener('mousedown', this.startDrag.bind(this, bpmWheel, bpmButton));
+            bpmNumber.addEventListener('touchstart', this.startDrag.bind(this, bpmWheel, bpmButton), { passive: true });
         }
 
         return bpmWheel;
@@ -211,14 +213,16 @@ class MusicSettings {
             keyNumber.classList.add('key-number');
             keyWheel.appendChild(keyNumber);
 
-            // Add click event listener to select the center number
+            // Add click event listener to select the number
             keyNumber.addEventListener('click', () => {
-                if (i === 2) { // Center number index
-                    keyButton.textContent = keyNumber.textContent;
-                    keyWheel.classList.remove('visible');
-                    this.closeOverlay();
-                }
+                keyButton.textContent = keyNumber.textContent;
+                keyWheel.classList.remove('visible');
+                this.closeOverlay();
             });
+
+            // Add event listeners for dragging
+            keyNumber.addEventListener('mousedown', this.startDrag.bind(this, keyWheel, keyButton));
+            keyNumber.addEventListener('touchstart', this.startDrag.bind(this, keyWheel, keyButton), { passive: true });
         }
 
         return keyWheel;
@@ -264,14 +268,16 @@ class MusicSettings {
             timeSignatureNumber.classList.add('time-signature-number');
             timeSignatureWheel.appendChild(timeSignatureNumber);
 
-            // Add click event listener to select the center number
+            // Add click event listener to select the number
             timeSignatureNumber.addEventListener('click', () => {
-                if (i === 2) { // Center number index
-                    timeSignatureButton.textContent = timeSignatureNumber.textContent;
-                    timeSignatureWheel.classList.remove('visible');
-                    this.closeOverlay();
-                }
+                timeSignatureButton.textContent = timeSignatureNumber.textContent;
+                timeSignatureWheel.classList.remove('visible');
+                this.closeOverlay();
             });
+
+            // Add event listeners for dragging
+            timeSignatureNumber.addEventListener('mousedown', this.startDrag.bind(this, timeSignatureWheel, timeSignatureButton));
+            timeSignatureNumber.addEventListener('touchstart', this.startDrag.bind(this, timeSignatureWheel, timeSignatureButton), { passive: true });
         }
 
         return timeSignatureWheel;
