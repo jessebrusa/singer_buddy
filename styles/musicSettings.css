@@ -44,7 +44,9 @@
 .music-settings .button:hover {
     background-color: #f0f0f0;
 }
-.music-settings .bpm-wheel {
+.music-settings .bpm-wheel,
+.music-settings .key-wheel,
+.music-settings .time-signature-wheel {
     position: absolute;
     top: 50px;
     left: 50%;
@@ -61,16 +63,22 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
-.music-settings .bpm-wheel.visible {
+.music-settings .bpm-wheel.visible,
+.music-settings .key-wheel.visible,
+.music-settings .time-signature-wheel.visible {
     display: flex;
 }
-.music-settings .bpm-number {
+.music-settings .bpm-number,
+.music-settings .key-number,
+.music-settings .time-signature-number {
     font-size: 20px;
     transition: transform 0.2s, opacity 0.2s;
     width: 60px;
     text-align: center;
     cursor: grab;
 }
-.music-settings .bpm-number:active {
+.music-settings .bpm-number:active,
+.music-settings .key-number:active,
+.music-settings .time-signature-number:active {
     cursor: grabbing;
 }
