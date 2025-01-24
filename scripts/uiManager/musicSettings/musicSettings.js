@@ -124,10 +124,23 @@ class MusicSettings {
 
         const keyWheel = this.createKeyWheel();
 
+        const keyFunctionButton = document.createElement('button');
+        keyFunctionButton.classList.add('key-function-button', 'button');
+        keyFunctionButton.textContent = 'Find Key';
+        keyFunctionButton.addEventListener('click', () => {
+            // Define the function to be performed here
+            alert('Key function button clicked!');
+        });
+
+        const keyButtonsContainer = document.createElement('div');
+        keyButtonsContainer.classList.add('key-buttons-container');
+        keyButtonsContainer.appendChild(keyButton);
+        keyButtonsContainer.appendChild(keyFunctionButton);
+
         const keyContainer = document.createElement('div');
         keyContainer.classList.add('input-container');
         keyContainer.appendChild(keyLabel);
-        keyContainer.appendChild(keyButton);
+        keyContainer.appendChild(keyButtonsContainer);
         keyContainer.appendChild(keyWheel);
 
         keyButton.addEventListener('click', () => {
